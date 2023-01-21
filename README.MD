@@ -17,8 +17,6 @@
 
 <img src="https://img.shields.io/badge/Express-4.18.2-green.svg">
 
-<img src="https://img.shields.io/badge/Nodemailer-6.8.0-green.svg">
-
 <img src="https://img.shields.io/github/languages/count/msaserj/inc-mailer">
 
 <img src="https://img.shields.io/github/languages/top/msaserj/inc-mailer.svg">
