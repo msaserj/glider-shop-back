@@ -12,7 +12,7 @@ app.use("/static", express.static(__dirname + "/assets"))
 
 const port = process.env.PORT || 5000;
 
-app.use("/api/gliders", require("./routes/gliders"));
+app.use("/api/gliders", require("./src/routes/gliders"));
 
 mongoose.set('strictQuery', false);
 mongoose.connect("mongodb://localhost:27017")

@@ -20,7 +20,6 @@ const createGlider = async  (req, res) => {
         res.status(500).json({message: "Segelflugzeug konnte nicht erstellt werden!"})
     }
 }
-
 module.exports = {
     getGliders,
     createGlider
