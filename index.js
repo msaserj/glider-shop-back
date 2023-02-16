@@ -10,7 +10,7 @@ app.use(express.json())
 // parse application x-www-form-urlencoded
 app.use(express.urlencoded({extended: true}))
 //images path
-app.use("/static", express.static(__dirname + "/assets"))
+app.use("/static", express.static(__dirname + "/src/assets"))
 
 app.use(cors())
 
