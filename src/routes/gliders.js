@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {createGlider, getGliders} = require("../controllers/glidersController");
+const {createGlider, getGliders, getGlider} = require("../controllers/glidersController");
 const path = require("path");
 const multer = require("multer");
 
@@ -19,7 +19,7 @@ const upload = multer({storage});
 // get all gliders
 router.get("/", getGliders)
 // get one glider on id
-router.get("/:id", (req, res)=> res.send('Get single gliders'))
+router.get("/:id", getGlider)
 // create one glider
 router.post("/", upload.single("gliderImg"), createGlider)
 
