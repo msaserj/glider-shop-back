@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const glidersSchema = mongoose.Schema({
+const glidersSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -24,6 +25,10 @@ const glidersSchema = mongoose.Schema({
   gliderImg: {
     type: String,
     required: true
+  },
+  user: {
+    ref: 'users',
+    type: Schema.Types.ObjectId
   }
 });
 
