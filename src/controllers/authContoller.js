@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const constants = require('../config/consts');
+const errorhandler = require('../utils/errorHandler');
 
 module.exports.login = async (req, res) => {
   try {
@@ -33,7 +34,7 @@ module.exports.login = async (req, res) => {
       });
     }
   } catch (e) {
-    console.log(e);
+    errorhandler(res, e);
   }
 };
 
@@ -59,6 +60,6 @@ module.exports.registr = async (req, res) => {
       });
     }
   } catch (e) {
-    console.log(e);
+    errorhandler(res, e);
   }
 };
