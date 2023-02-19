@@ -3,6 +3,8 @@ const router = express.Router();
 const controller = require('../controllers/glidersController');
 const path = require('path');
 const multer = require('multer');
+const passport = require('passport');
+const { session } = require('passport');
 
 // image path
 const storage = multer.diskStorage({
@@ -15,7 +17,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // get all gliders
-router.get('/', controller.getGliders);
+router.get('/', passport.authenticate('jwt', { session: false }), controller.getGliders);
 // get one glider on id
 router.get('/:id', controller.getGliderById);
 // create one glider
