@@ -17,7 +17,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // get all gliders
-router.get('/', passport.authenticate('jwt', { session: false }), controller.getGliders);
+// router.get('/', passport.authenticate('jwt', { session: false }), controller.getGliders);
+router.get('/', controller.getGliders);
 // get one glider on id
 router.get('/:id', controller.getGliderById);
 // create one glider

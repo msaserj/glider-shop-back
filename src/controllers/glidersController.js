@@ -1,11 +1,12 @@
 const Glider = require('../models/glidersModel');
+const errorhandler = require('../utils/errorHandler');
 
 module.exports.getGliders = async (req, res) => {
   try {
     const gliders = await Glider.find();
     res.status(200).json(gliders);
-  } catch (err) {
-    res.status(500).json({ message: 'Liste der Segelflugzeuge konnte nicht abgerufen werden' });
+  } catch (error) {
+    errorhandler(res, error);
   }
 };
 
@@ -13,8 +14,8 @@ module.exports.getGliderById = async (req, res) => {
   try {
     const glider = await Glider.find({ _id: req.params.id });
     res.status(200).json(glider);
-  } catch (err) {
-    res.status(400).json({ message: 'Segelflugzeug konnte nicht abgerufen werden' });
+  } catch (error) {
+    errorhandler(res, error);
   }
 };
 
@@ -31,24 +32,34 @@ module.exports.createGlider = async (req, res) => {
     });
     res.status(201).json(glider);
   } catch (error) {
-    res.status(500).json({ message: 'Segelflugzeug konnte nicht erstellt werden!' });
+    errorhandler(res, error);
   }
 };
 
 module.exports.removeGliderById = async (req, res) => {
   try {
-    const glider = await Glider.find({ _id: req.params.id });
-    res.status(200);
-  } catch (err) {
-    res.status(400).json({ message: 'Segelflugzeug konnte nicht abgerufen werden' });
+    await Glider.remove({ _id: req.params.id });
+    res.status(200).json({
+      status: true,
+      message: 'Successfully deleted'
+    });
+  } catch (error) {
+    errorhandler(res, error);
   }
 };
 
 module.exports.updateGliderById = async (req, res) => {
   try {
-    const glider = await Glider.find({ _id: req.params.id });
-    res.status(200);
-  } catch (err) {
-    res.status(400).json({ message: 'Segelflugzeug konnte nicht abgerufen werden' });
+    const glider = await Glider.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: req.body },
+      { new: true }
+    ); // завпись после изменений
+    res.status(200).json({
+      status: true,
+      position: glider
+    });
+  } catch (error) {
+    errorhandler(res, error);
   }
 };
