@@ -1,26 +1,30 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const {createGlider, getGliders, getGlider} = require("../controllers/glidersController");
-const path = require("path");
-const multer = require("multer");
+const controller = require('../controllers/glidersController');
+const path = require('path');
+const multer = require('multer');
 
 // image path
 const storage = multer.diskStorage({
-    destination: "./src/assets/",
-    filename: (req, file, callback) => {
-        callback(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname))
-    }
+  destination: './src/assets/',
+  filename: (req, file, callback) => {
+    callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
 });
 
-const upload = multer({storage});
-
-
+const upload = multer({ storage });
 
 // get all gliders
-router.get("/", getGliders)
+router.get('/', controller.getGliders);
 // get one glider on id
-router.get("/:id", getGlider)
+router.get('/:id', controller.getGliderById);
 // create one glider
-router.post("/", upload.single("gliderImg"), createGlider)
+router.post('/', upload.single('gliderImg'), controller.createGlider);
 
-module.exports = router
+// patch one glider on id
+router.patch('/:id', controller.updateGliderById);
+
+// delete one glider on id
+router.delete('/:id', controller.removeGliderById);
+
+module.exports = router;
