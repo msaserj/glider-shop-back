@@ -1,13 +1,13 @@
 <h1 align="center">Glider Shop Back</h1>
 <h2 align="center">
 
-[//]: # ([![Mentioned in Awesome Vue.js]&#40;https://awesome.re/mentioned-badge.svg&#41;]&#40;https://github.com/vuejs/awesome-vue&#41;)
+[//]: # '[![Mentioned in Awesome Vue.js](https://awesome.re/mentioned-badge.svg)](https://github.com/vuejs/awesome-vue)'
 
 </h2>
 
 <p align="center">
 
-[//]: # (<img src="https://img.shields.io/npm/dy/msaserj">)
+[//]: # '<img src="https://img.shields.io/npm/dy/msaserj">'
 
 <img src="https://img.shields.io/badge/made%20by-msaserj-red.svg" >
 
@@ -25,19 +25,17 @@
 
 </p>
 
-
-[//]: # (<h2 align="center"><a  href="">Live Demo</a></h2>)
-
+[//]: # '<h2 align="center"><a  href="">Live Demo</a></h2>'
 
 ## Description
 
 **Glider Shop Back.**
 
-[//]: # (<p align="center"><img src="" width="50%"></p>)
+[//]: # '<p align="center"><img src="" width="50%"></p>'
 
 **An example of what this looks like in an email message.**
 
-[//]: # (<p align="center"><img src="" width="50%"></p>)
+[//]: # '<p align="center"><img src="" width="50%"></p>'
 
 ## About the project.
 
@@ -48,6 +46,8 @@ Glider shop back
 **NodeJS**,
 **Express**,
 **Mongoose**,
+**MongoDB**,
+**JWT**,
 **JS**.
 
 ## Project setup
@@ -56,7 +56,9 @@ Glider shop back
 npm install
 node index.js
 ```
+
 #### use yarn
+
 ```
 yarn
 node index.js
