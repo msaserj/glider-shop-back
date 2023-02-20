@@ -1,20 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/glidersController');
-const path = require('path');
-const multer = require('multer');
 const passport = require('passport');
 const { session } = require('passport');
-
-// image path
-const storage = multer.diskStorage({
-  destination: './src/assets/',
-  filename: (req, file, callback) => {
-    callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-  }
-});
-
-const upload = multer({ storage });
+const upload = require('../middleware/upload');
 
 // get all gliders
 // router.get('/', passport.authenticate('jwt', { session: false }), controller.getGliders);
@@ -25,7 +14,7 @@ router.get('/:id', controller.getGliderById);
 router.post('/', upload.single('gliderImg'), controller.createGlider);
 
 // patch one glider on id
-router.patch('/:id', controller.updateGliderById);
+router.patch('/:id', upload.single('gliderImg'), controller.updateGliderById);
 
 // delete one glider on id
 router.delete('/:id', controller.removeGliderById);

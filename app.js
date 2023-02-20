@@ -20,6 +20,7 @@ app.use('/api/auth', require('./src/routes/auth'));
 
 // parse application x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+
 //images path
 app.use('/static', express.static(__dirname + '/src/assets'));
 
