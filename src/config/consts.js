@@ -1,1 +1,1 @@
-module.exports = require('./keys.prod');
+module.exports = require('./keys.dev');
