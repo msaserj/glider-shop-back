@@ -28,7 +28,7 @@ module.exports.createGlider = async (req, res) => {
       description,
       range,
       addDescription,
-      gliderImg: `http://localhost:${process.env.PORT}/static/${req.file.filename}`
+      gliderImg: `${process.env.ASSETS_URI}/static/${req.file.filename}`
     });
     res.status(201).json(glider);
   } catch (error) {
