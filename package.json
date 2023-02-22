@@ -7,7 +7,8 @@
     "server": "node index.js",
     "dev": "nodemon index.js",
     "pretty": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pushremote": "git push gitlab master | git push origin master"
   },
   "keywords": [
     "nodejs",
