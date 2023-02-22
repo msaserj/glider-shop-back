@@ -13,7 +13,6 @@ app.use(express.json());
 
 app.use(passport.initialize());
 require('./src/middleware/passport')(passport);
-
 app.use('/api/gliders', require('./src/routes/gliders'));
 app.use('/api/order', require('./src/routes/order'));
 app.use('/api/auth', require('./src/routes/auth'));
