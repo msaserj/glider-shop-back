@@ -22,6 +22,6 @@ app.use('/api/auth', require('./src/routes/auth'));
 app.use(express.urlencoded({ extended: true }));
 
 //images path
-app.use('/static', express.static(__dirname + '/src/assets'));
+app.use('/static', express.static(__dirname + '/assets'));
 
 module.exports = app;

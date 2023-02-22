@@ -1,6 +1,5 @@
 module.exports = {
-  mongodbURL:
-    'mongodb+srv://sergks:ejo2IdF8zPHeOk56@glidershop.aa9mz6s.mongodb.net/?retryWrites=true&w=majority',
+  mongodbURL: 'mongodb://127.0.0.1:27017',
   jwt: 'dev-jwt',
-  assetsURI: 'http://localhost:8000'
+  assetsURI: 'http://212.58.103.107:3010'
 };
