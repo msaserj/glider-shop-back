@@ -12,7 +12,6 @@ router.get('/', controller.getGliders);
 router.get('/:id', controller.getGliderById);
 // create one glider
 router.post('/', upload.single('gliderImg'), controller.createGlider);
-
 // patch one glider on id
 router.patch('/:id', upload.single('gliderImg'), controller.updateGliderById);
 
