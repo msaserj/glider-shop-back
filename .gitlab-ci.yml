@@ -32,5 +32,5 @@ deploy:
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@212.109.193.181 "
       docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
-      docker ps -aq | xargs docker stop | xargs docker rm &&
+      docker ps -aq | xargs docker stop | docker system prune -f &&
       docker run --network host -d $IMAGE_NAME:$IMAGE_TAG"
