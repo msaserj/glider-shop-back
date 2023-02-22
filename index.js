@@ -2,7 +2,7 @@ const app = require('./app');
 const mongoose = require('mongoose');
 const keys = require('./src/config/consts');
 
-const port = 3010;
+const port = process.env.PORT || 3010;
 
 require('dotenv').config();
 
