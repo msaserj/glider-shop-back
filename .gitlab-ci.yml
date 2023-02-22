@@ -3,6 +3,13 @@ stages:
 
 deploy:
   stage: deploy
+  before_script:
+    - chmod 400 $SSH_KEY
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY shop@vds.msaserj.ru "
-      git clone git@gitlab.com:msaserj/glider-shop-back.git `/shopsrv"
+      systemctl --user stop shopsrv.service &&
+      rm -fr ~/shopsrv/srv &&
+      git clone https://gitlab.com/msaserj/glider-shop-back.git ~/shopsrv/srv &&
+      cd ~/shopsrv/srv &&
+      npm install &&
+      systemctl --user start shopsrv.service "
