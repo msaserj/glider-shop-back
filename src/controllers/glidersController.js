@@ -1,5 +1,6 @@
 const Glider = require('../models/glidersModel');
 const errorhandler = require('../utils/errorHandler');
+const keys = require('../config/keys.dev');
 
 module.exports.getGliders = async (req, res) => {
   try {
@@ -28,7 +29,7 @@ module.exports.createGlider = async (req, res) => {
       description,
       range,
       addDescription,
-      gliderImg: `${process.env.ASSETS_URI}/static/${req.file.filename}`
+      gliderImg: `${keys.assetsURI}/static/${req.file.filename}`
     });
     res.status(201).json(glider);
   } catch (error) {

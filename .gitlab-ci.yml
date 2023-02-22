@@ -1,0 +1,36 @@
+variables:
+  IMAGE_NAME: msaserj/demo-app
+  IMAGE_TAG: v1
+
+stages:
+  - build-image
+  - deploy
+
+# build-app:
+#     stage: build-app
+#     image: node:12.13.0-alpine
+#     script:
+#         - npm install
+
+build_image:
+  stage: build-image
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  variables:
+    DOCKER_TLS_CERTDIR: '/certs'
+  before_script:
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
+  script:
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    - docker push $IMAGE_NAME:$IMAGE_TAG
+
+deploy:
+  stage: deploy
+  before_script:
+    - chmod 400 $SSH_KEY
+  script:
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@212.109.193.181 "
+      docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
+      docker ps -aq | xargs docker stop | xargs docker rm &&
+      docker run --network host -d -p 8000:8000 $IMAGE_NAME:$IMAGE_TAG"
