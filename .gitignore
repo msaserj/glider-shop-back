@@ -1,2 +1,2 @@
 node_modules
-config/keys.dev.js
+src/config/keys.dev.js
