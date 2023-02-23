@@ -1,15 +1,33 @@
 stages:
-  - deploy
+  - stop and delete old srv
+  - git clone
+  - install and start
 
-deploy:
-  stage: deploy
+delete-old-srv:
+  stage: stop and delete old srv
   before_script:
     - chmod 400 $SSH_KEY
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY shop@vds.msaserj.ru "
       systemctl --user stop shopsrv.service &&
       rm -fr ~/shopsrv/srv &&
+      exit"
+
+git-clone:
+  stage: git clone
+  before_script:
+    - chmod 400 $SSH_KEY
+  script:
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY shop@vds.msaserj.ru "
       git clone https://gitlab.com/msaserj/glider-shop-back.git ~/shopsrv/srv &&
+      exit"
+
+install-start:
+  stage: install and start
+  before_script:
+    - chmod 400 $SSH_KEY
+  script:
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY shop@vds.msaserj.ru "
       cd ~/shopsrv/srv &&
       npm install &&
       systemctl --user start shopsrv.service "
