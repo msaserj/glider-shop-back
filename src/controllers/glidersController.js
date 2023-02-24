@@ -22,13 +22,13 @@ module.exports.getGliderById = async (req, res) => {
 
 module.exports.createGlider = async (req, res) => {
   try {
-    const { name, price, description, range, addDescription } = req.body;
+    const { make, model, price, description, list } = req.body;
     const glider = await Glider.create({
-      name,
+      make,
       price,
       description,
-      range,
-      addDescription,
+      model,
+      list,
       gliderImg: `${keys.assetsURI}/static/${req.file.filename}`
     });
     res.status(201).json(glider);
