@@ -22,14 +22,48 @@ module.exports.getGliderById = async (req, res) => {
 
 module.exports.createGlider = async (req, res) => {
   try {
-    const { make, model, price, description, list } = req.body;
+    const {
+      make,
+      model,
+      price,
+      description,
+      list: {
+        fullDescription,
+        glideRatio,
+        motor,
+        seats,
+        fuselageLength,
+        maxSpeed,
+        emptyMass,
+        maxTakeOfMass,
+        year,
+        oxygen,
+        trailer,
+        engine
+      }
+    } = req.body;
+    console.log(req.body);
+
     const glider = await Glider.create({
       make,
       price,
       description,
       model,
-      list,
-      gliderImg: `${keys.assetsURI}/static/${req.file.filename}`
+      gliderImg: `${keys.assetsURI}/static/${req.file.filename}`,
+      list: {
+        fullDescription,
+        glideRatio,
+        motor,
+        seats,
+        fuselageLength,
+        maxSpeed,
+        emptyMass,
+        maxTakeOfMass,
+        year,
+        oxygen,
+        trailer,
+        engine
+      }
     });
     res.status(201).json(glider);
   } catch (error) {

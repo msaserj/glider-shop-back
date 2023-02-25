@@ -33,7 +33,7 @@ const glidersSchema = new Schema({
       required: true
     },
     motor: {
-      type: Boolean,
+      type: String,
       required: true
     },
     seats: {
