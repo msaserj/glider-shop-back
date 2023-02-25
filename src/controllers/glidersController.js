@@ -1,6 +1,6 @@
 const Glider = require('../models/glidersModel');
 const errorhandler = require('../utils/errorHandler');
-const keys = require('../config/keys.dev');
+const keys = require('../config/consts');
 
 module.exports.getGliders = async (req, res) => {
   try {
