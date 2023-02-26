@@ -8,9 +8,9 @@ delete-old-srv:
   before_script:
     - chmod 400 $SSH_KEY
   script:
-    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY shop@vds.msaserj.ru "
-      systemctl --user stop shopsrv.service &&
-      rm -fr ~/shopsrv/srv &&
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@vds.msaserj.ru "
+      systemctl stop shop.service &&
+      rm -fr /home/shop/shopsrv/srv &&
       exit"
 
 git-clone:
@@ -18,8 +18,8 @@ git-clone:
   before_script:
     - chmod 400 $SSH_KEY
   script:
-    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY shop@vds.msaserj.ru "
-      git clone https://gitlab.com/msaserj/glider-shop-back.git ~/shopsrv/srv &&
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@vds.msaserj.ru "
+      git clone https://gitlab.com/msaserj/glider-shop-back.git /home/shop/shopsrv/srv &&
       exit"
 
 install-start:
@@ -27,7 +27,7 @@ install-start:
   before_script:
     - chmod 400 $SSH_KEY
   script:
-    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY shop@vds.msaserj.ru "
-      cd ~/shopsrv/srv &&
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@vds.msaserj.ru "
+      cd /home/shop/shopsrv/srv &&
       npm install &&
-      systemctl --user start shopsrv.service "
+      systemctl start shop.service "
