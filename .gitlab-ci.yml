@@ -29,5 +29,5 @@ install-start:
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@vds.msaserj.ru "
       cd /home/shop/shopsrv/srv &&
-      npm install &&
+      yarn install &&
       systemctl start shop.service "
