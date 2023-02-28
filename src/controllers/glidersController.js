@@ -11,6 +11,16 @@ module.exports.getGliders = async (req, res) => {
   }
 };
 
+module.exports.getGlidersFromCart = async (req, res) => {
+  try {
+    const ids = req.params.id.split(',');
+    const gliders = await Glider.find({ _id: { $in: ids } });
+    res.status(200).json(gliders);
+  } catch (error) {
+    errorhandler(res, error);
+  }
+};
+
 module.exports.getGliderById = async (req, res) => {
   try {
     const glider = await Glider.find({ _id: req.params.id });

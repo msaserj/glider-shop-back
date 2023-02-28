@@ -7,7 +7,10 @@ const upload = require('../middleware/upload');
 
 // get all gliders
 // router.get('/', passport.authenticate('jwt', { session: false }), controller.getGliders);
+
 router.get('/', controller.getGliders);
+
+router.get('/cart/:id', controller.getGlidersFromCart);
 // get one glider on id
 router.get('/:id', controller.getGliderById);
 // create one glider
