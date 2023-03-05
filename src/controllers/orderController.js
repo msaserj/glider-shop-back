@@ -1,7 +1,6 @@
 const Order = require('../models/orderModel');
 const errorHandler = require('../utils/errorHandler');
 
-//https://localhost:8000/api/order?offset=5&limit10
 module.exports.getAllOrders = async (req, res) => {
   const query = {
     user: req.user.id
